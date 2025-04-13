@@ -113,3 +113,7 @@ button {
   margin-top: 1rem;
   background: #e74c3c;
 }
+
+button#retry {
+  background: #2ecc71;
+}

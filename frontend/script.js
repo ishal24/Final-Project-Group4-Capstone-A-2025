@@ -25,6 +25,14 @@ const filters = [
   { name: "ghibli", src: "filters/ghibli.jpg" }
 ];
 
+const loadingGifs = [
+  "filters/loading1.gif",
+  "filters/loading2.gif",
+  "filters/loading3.gif",
+  "filters/loading4.gif",
+  "filters/loading5.gif"
+];
+
 const prompts = {
   anime: "high quality anime-style portrait, sharp lines, clean shading, vivid colors, detailed eyes, background blur, soft lighting, professional anime art",
   cyberpunk: "cyberpunk portrait, neon lights, glowing eyes, futuristic city in background, techwear outfit, moody lighting, vibrant colors, cinematic atmosphere",
@@ -84,7 +92,8 @@ captureBtn.addEventListener("click", async () => {
   const imageData = canvas.toDataURL("image/jpeg");
 
   modalTitle.textContent = "Generating image...";
-  modalImage.src = "filters/loading1.gif"; // optional: show loading spinner
+  const randomLoadingGif = `filters/loading${Math.floor(Math.random() * 5) + 1}.gif`;
+  modalImage.src = randomLoadingGif;
   modal.style.display = "flex";
 
   try {
@@ -109,6 +118,58 @@ captureBtn.addEventListener("click", async () => {
     console.error(err);
   }
 });
+
+const retryBtn = document.createElement("button");
+retryBtn.textContent = "Retry";
+modal.querySelector(".modal-content").appendChild(retryBtn);
+
+retryBtn.addEventListener("click", async () => {
+  const size = 768;
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+
+  const cropSize = Math.min(video.videoWidth, video.videoHeight);
+  const offsetX = (video.videoWidth - cropSize) / 2;
+  const offsetY = (video.videoHeight - cropSize) / 2;
+
+  // Flip horizontally
+  ctx.translate(size, 0);
+  ctx.scale(-1, 1);
+
+  ctx.drawImage(video, offsetX, offsetY, cropSize, cropSize, 0, 0, size, size);
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+
+  const imageData = canvas.toDataURL("image/jpeg");
+
+  modalTitle.textContent = "Generating image...";
+  const randomLoadingGif = `filters/loading${Math.floor(Math.random() * 5) + 1}.gif`;
+  modalImage.src = randomLoadingGif; // Show loading spinner again
+  modal.style.display = "flex";
+
+  try {
+    const res = await fetch("/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        image: imageData,
+        prompt: prompts[selectedFilter],
+        negative_prompt: negativePrompt
+      })
+    });
+
+    const data = await res.json();
+    modalTitle.textContent = "AI Stylized Result";
+    modalImage.src = data.generated_image;
+
+  } catch (err) {
+    modalTitle.textContent = "Error";
+    modalImage.src = "";
+    alert("Failed to generate image. Check backend.");
+    console.error(err);
+  }
+});
+
 
 // Close modal
 modal.addEventListener("click", (e) => {
