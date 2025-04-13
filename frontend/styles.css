@@ -1,0 +1,115 @@
+body {
+  font-family: sans-serif;
+  background: #050217;
+  color: #F9F8FC;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  background: #0c052e;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  border-radius: 0.5rem;
+  transform: scaleX(-1); /* This flips the camera horizontally */
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Carousel */
+.carousel-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.filter-option {
+  flex: 0 0 auto;
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition: transform 0.2s, border 0.2s;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  color: #F9F8FC;
+}
+
+.filter-option.selected {
+  border-color: #3498db;
+  transform: scale(1.1);
+}
+
+.filter-option img {
+  width: 100%;
+  border-radius: 0.5rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+/* Modal popup */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 2, 23, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  display: none;
+}
+
+.modal-content {
+  background: #0c052e;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.modal-content img {
+  width: 300px;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.modal button {
+  margin-top: 1rem;
+  background: #e74c3c;
+}
