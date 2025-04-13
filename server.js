@@ -31,9 +31,9 @@ app.post("/generate", async (req, res) => {
       negative_prompt: negative_prompt,
       width: 768,
       height: 768,
-      sampler_index: "DPM++ 2M", // You can change sampler
-      steps: 20,
-      denoising_strength: 0.5
+      sampler_index: "Euler A", // You can change sampler
+      steps: 40,
+      denoising_strength: 0.35
     });
 
     // Return the result as base64

@@ -34,10 +34,10 @@ const loadingGifs = [
 ];
 
 const prompts = {
-  anime: "high quality anime-style portrait, sharp lines, clean shading, vivid colors, detailed eyes, background blur, soft lighting, professional anime art",
-  cyberpunk: "cyberpunk portrait, neon lights, glowing eyes, futuristic city in background, techwear outfit, moody lighting, vibrant colors, cinematic atmosphere",
-  "old painting": "classic oil painting portrait, renaissance art style, dramatic lighting, realistic textures, fine brush strokes, muted earthy tones, vintage background",
-  ghibli: "ghibli-style portrait, soft pastel colors, whimsical background, expressive eyes, warm lighting, hand-painted feel, peaceful mood"
+  anime: "anime-style, high-quality, highly detailed portrait, sharp clean lines, vivid colors, professional anime art, clean shading, soft lighting, glowing eyes, blurred background, depth of field, cinematic composition, intricate details, stunning visual effects, ethereal glow, anime beauty, character design",
+  cyberpunk: "cyberpunk portrait, futuristic techwear outfit, neon-lit background, glowing eyes, reflective surfaces, moody lighting, vibrant neon colors, cybernetic enhancements, futuristic cityscape, cinematic atmosphere, high detail, sharp focus, sci-fi aesthetic",
+  "old painting": "renaissance-style oil painting portrait, classic art, realistic face, soft shadows, dramatic chiaroscuro lighting, textured canvas, muted earthy palette, elegant background, detailed brush strokes, 17th century style, vintage aesthetic",
+  ghibli: "Studio Ghibli-style portrait, warm soft lighting, gentle pastel color palette, expressive large eyes, hand-painted texture, whimsical nature background, peaceful emotion, charming aesthetic, cel-shaded style, subtle details, storybook illustration feel"
 };
 
 const negativePrompt = "blurry, lowres, worst quality, bad anatomy, bad hands, distorted face, watermark, nudity, nsfw, extra limbs, cropped head, mutated, deformed, jpeg artifacts";
